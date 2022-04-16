@@ -9,11 +9,17 @@
     <body>
         <h1>Blog Name</h1>
         <p class='edit'>[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
-            <div class='post'>
-                <h2 class='title'>{{ $post->title }}</h2>
-                <p class='body'>{{ $post->body }} </p>
-                <p class='updated_at'>{{ $post->updated_at }} </p>
-            </div>
-            <div class='back'>[<a href='/'>back</a>]</div>
+        <form action="/posts/{{ $post->id }}" id="form_delete" method="post">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <input onClick="return Check()" type="submit" value="delete">
+        </form>
+        <div class='post'>
+            <h2 class='title'>{{ $post->title }}</h2>
+            <p class='body'>{{ $post->body }} </p>
+            <p class='updated_at'>{{ $post->updated_at }} </p>
+        </div>
+        <div class='back'>[<a href='/'>back</a>]</div>
+        <script type="text/javascript" src="/js/curriculum8-6.js"></script>
     </body>
 </html>
